@@ -1,4 +1,4 @@
-// the configured options and settings for dmstodeg
-#define dmstodeg_VERSION_MAJOR @dmstodeg_VERSION_MAJOR@
-#define dmstodeg_VERSION_MINOR @dmstodeg_VERSION_MINOR@
-#define dmstodeg_VERSION_PATCH @dmstodeg_VERSION_PATCH@
+// the configured options and settings for MIST
+#define MIST_VERSION_MAJOR @MIST_VERSION_MAJOR@
+#define MIST_VERSION_MINOR @MIST_VERSION_MINOR@
+#define MIST_VERSION_PATCH @MIST_VERSION_PATCH@

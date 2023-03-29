@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(MIST VERSION 0.0.1)
+project(MIST VERSION 0.0.2)
 
 CMAKE_POLICY(SET CMP0020 NEW)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -14,7 +14,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Windows rc file section
 #set(APP_ICON_RESOURCE_WINDOWS "${CMAKE_CURRENT_SOURCE_DIR}/resources/img/mist_icon.o")
 
-set(CMAKE_PREFIX_PATH "/usr/lib64/cmake/Qt5/")
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
@@ -23,9 +22,6 @@ configure_file(config.h.in ../include/config.h)
 # Project source directories and files
 set(PROJECT_SOURCES
 		src/main.cpp
-		src/mainwindow.cpp
-		src/mainwindow.h
-		src/mainwindow.ui
 )
 
 # Add executable section
