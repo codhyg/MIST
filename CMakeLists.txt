@@ -21,23 +21,26 @@ configure_file(config.h.in ../include/config.h)
 
 # Project source directories and files
 set(PROJECT_SOURCES
-		src/main.cpp
+        src/main.cpp
+        src/mainwindow.h
+        src/mainwindow.cpp
+        src/mainwindow.ui
 )
 
 # Add executable section
 IF (UNIX)
-		add_executable(MIST WIN32 ${PROJECT_SOURCES})
+add_executable(MIST WIN32 ${PROJECT_SOURCES})
 ELSE()
-		add_executable(MIST WIN32 ${PROJECT_SOURCES} ${APP_ICON_RESOURCE_WINDOWS})
+add_executable(MIST WIN32 ${PROJECT_SOURCES} ${APP_ICON_RESOURCE_WINDOWS})
 ENDIF()
 
 set_property(TARGET MIST PROPERTY WIN32_EXECUTABLE true)
 set_target_properties(MIST PROPERTIES
-		WIN32_EXECUTABLE TRUE
+        WIN32_EXECUTABLE TRUE
 )
 
 IF(WIN32)
-		set_target_properties(MIST PROPERTIES LINK_FLAGS "-mwindows")
+set_target_properties(MIST PROPERTIES LINK_FLAGS "-mwindows")
 ENDIF()
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
@@ -46,13 +49,13 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 option(ENABLE_TEST "Turn on to enable tests" OFF)
 
 if (ENABLE_TEST)
-		enable_testing()
+        enable_testing()
 
-		set(CATCH2_DIR ./test)
-		add_library(Catch INTERFACE)
-		target_include_directories(Catch INTERFACE ${CATCH2_DIR})
+        set(CATCH2_DIR ./test)
+        add_library(Catch INTERFACE)
+        target_include_directories(Catch INTERFACE ${CATCH2_DIR})
 
-		add_subdirectory(./test)
+        add_subdirectory(./test)
 endif()
 
 target_include_directories(MIST PUBLIC ../include)
