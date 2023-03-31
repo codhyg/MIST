@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     else
     {
-        ui->statusbar->showMessage("Failed to connect");
+        ui->statusbar->showMessage("Failed to connect: " + db.lastError().databaseText());
     }
 }
 
