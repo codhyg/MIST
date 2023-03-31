@@ -6,6 +6,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("./../../db/m_instruments.db");
+
+    if (db.open())
+    {
+        ui->statusbar->showMessage("Connected to database");
+    }
+    else
+    {
+        ui->statusbar->showMessage("Failed to connect");
+    }
 }
 
 MainWindow::~MainWindow()

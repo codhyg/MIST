@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include </usr/include/qt5/QtSql/qsqldatabase.h>
+#include </usr/include/qt5/QtSql/qsqlerror.h>
 
 namespace Ui {
     class MainWindow;
@@ -17,6 +19,7 @@ class MainWindow : public QMainWindow
 
     private:
         Ui::MainWindow *ui;
+        QSqlDatabase db;
 };
 
 #endif // MAINWINDOW_H
