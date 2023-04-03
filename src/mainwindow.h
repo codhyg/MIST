@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include </usr/include/qt5/QtSql/qsqldatabase.h>
 #include </usr/include/qt5/QtSql/qsqlerror.h>
+#include </usr/include/qt5/QtSql/qsqltablemodel.h>
 
 namespace Ui {
     class MainWindow;
@@ -17,9 +18,20 @@ class MainWindow : public QMainWindow
         explicit MainWindow(QWidget *parent = nullptr);
         ~MainWindow();
 
-    private:
+private slots:
+    void on_actionRemove_item_triggered();
+
+private slots:
+    void on_tableView_clicked(const QModelIndex &index);
+
+private slots:
+    void on_actionAdd_item_triggered();
+
+private:
         Ui::MainWindow *ui;
         QSqlDatabase db;
+        QSqlTableModel *model;
+        int currentRow;
 };
 
 #endif // MAINWINDOW_H
