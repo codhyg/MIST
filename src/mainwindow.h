@@ -5,6 +5,8 @@
 #include </usr/include/qt5/QtSql/qsqldatabase.h>
 #include </usr/include/qt5/QtSql/qsqlerror.h>
 #include </usr/include/qt5/QtSql/qsqltablemodel.h>
+#include </usr/include/qt5/QtSql/qsqlrelationaldelegate.h>
+#include </usr/include/qt5/QtSql/qsqlrelationaltablemodel.h>
 
 namespace Ui {
     class MainWindow;
@@ -30,7 +32,7 @@ private slots:
 private:
         Ui::MainWindow *ui;
         QSqlDatabase db;
-        QSqlTableModel *model;
+        QSqlRelationalTableModel *model;
         int currentRow;
 };
 

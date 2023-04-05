@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     {
         ui->statusbar->showMessage("Connected to database");
 
-        model = new QSqlTableModel(this, db);
+        model = new QSqlRelationalTableModel(this, db);
         model->setTable("INSTRUMENTS");
         model->select();
         model->setHeaderData(0, Qt::Horizontal, "ID", Qt::DisplayRole);
@@ -25,10 +25,12 @@ MainWindow::MainWindow(QWidget *parent) :
         model->setHeaderData(5, Qt::Horizontal, "Точность", Qt::DisplayRole);
         model->setHeaderData(6, Qt::Horizontal, "Цена деления", Qt::DisplayRole);
 
-
         ui->tableView->setModel(model);
         ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
         ui->tableView->setColumnHidden(0, true);
+        ui->tableView->setItemDelegate(new QSqlRelationalDelegate(ui->tableView));
+
+        //ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     }
     else
     {
