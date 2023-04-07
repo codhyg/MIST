@@ -14,8 +14,10 @@ MainWindow::MainWindow(QWidget *parent) :
     {
         ui->statusbar->showMessage("Connected to database");
 
-        model = new QSqlRelationalTableModel(this, db);
+        model = new QSqlRelationalTableModel(this);
         model->setTable("INSTRUMENTS");
+        model->setRelation(1, QSqlRelation("TYPES", "type_key", "MI_type"));
+        model->setRelation(2, QSqlRelation("CHARS", "char_type", "MI_char"));
         model->select();
         model->setHeaderData(0, Qt::Horizontal, "ID", Qt::DisplayRole);
         model->setHeaderData(1, Qt::Horizontal, "Тип", Qt::DisplayRole);
@@ -28,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->tableView->setModel(model);
         ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
         ui->tableView->setColumnHidden(0, true);
-        ui->tableView->setItemDelegate(new QSqlRelationalDelegate(ui->tableView));
+        ui->tableView->setItemDelegate(new QSqlRelationalDelegate(this));
 
         //ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     }
@@ -40,6 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    db.close();
     delete ui;
 }
 
