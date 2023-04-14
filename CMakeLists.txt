@@ -32,6 +32,9 @@ set(PROJECT_SOURCES
     src/mainwindow.h
     src/mainwindow.cpp
     src/mainwindow.ui
+    src/editwindow.h
+    src/editwindow.cpp
+    src/editwindow.ui
     )
 
 # Add executable section
